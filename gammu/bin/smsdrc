@@ -4,9 +4,9 @@
 # Gammu configuration, this section is like section "gammu" in "gammurc" file,
 # see gammurc(5) for documentation.
 [gammu]
-device = com5:
+device = /dev/tty.usbserial
+connection = at115200
 #model = 6110
-connection = at115200 
 #synchronizetime = yes
 #logfile = gammulog # this is not used at all in SMSD mode
 #logformat = textall

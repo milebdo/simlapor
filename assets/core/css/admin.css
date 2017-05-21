@@ -2,6 +2,29 @@
 .margin-table{
    margin-top: -20px;    
 }
+
+.navbar-inverse .navbar-inner {
+    background-color: #2c5980 ;
+    border-color: #2c5980;
+}
+
+.table > thead > tr > th {
+    /* border-bottom-width: 2px; */
+    background: #4C4C4C;
+    color: #ECECFB;
+}
+
+.table > tbody {
+    /* border-bottom-width: 2px; */
+    background: #fff;
+    color: #555;
+}
+
+.table> tbody > tr:hover {
+    background-color: #eee;
+}
+
+
 @media (max-width: 979px)  {
   .table-responsive {
     width: 100%;
@@ -60,4 +83,12 @@
 #sidenav > li > ul > .active > a{
    background: #EEE;
    text-shadow: none;
+}
+
+body {
+  font-family: "Ubuntu", Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  background: #f1f1f1; 
 }

@@ -8,8 +8,8 @@
 
 [gammu]
 
-device = com5:
-connection = at115200 
+device = /dev/tty.usbserial
+connection = at115200
 ; Do not use model configuration unless you really need it
 ;model = 6110
 ;synchronizetime = yes

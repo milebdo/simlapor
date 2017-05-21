@@ -7,7 +7,7 @@ class Send_broadcast extends Admincore
         parent::__construct();
         
     }
-  
+
     function index()
     {
         $this->load->library('form_validation');
@@ -15,36 +15,37 @@ class Send_broadcast extends Admincore
         $this->form_validation->set_error_delimiters('<p class="text-alert">', '</p> ');  
         $this->form_validation->set_rules('SendNumber[]','Phone Number','required|xss_clean|htmlspecialchars|numeric|trim');
         $this->form_validation->set_rules('message','Message','required|xss_clean|htmlspecialchars|trim');
-         
+
         
         if ($this->form_validation->run() == FALSE)
         {
-           
-            
+
+
             $data['content'] = $this->load->view('content','',TRUE);
             $this->load->view('/admin/main',$data);
         }
-         else
+        else
         {
 
-	        $t = count($this->input->post('SendNumber'));
-                for($i = 1;$i <= $this->input->post('total');$i++)
-                {
-                    foreach($this->input->post('SendNumber') as $x)
-                    {
-                        core::insert('outbox','gammu',array(
-                                            'DestinationNumber' => $x,
-                                             'TextDecoded' => $this->input->post('message'),
-                                            ));
-                    }
-                }
-	    
-		$this->session->set_flashdata('success','success');
-		$this->session->set_flashdata('TotalSend',$t);
-		redirect('send_broadcast');
-	     
+           $t = count($this->input->post('SendNumber'));
+           for($i = 1;$i <= $this->input->post('total');$i++)
+           {
+            foreach($this->input->post('SendNumber') as $x)
+            {
+                core::insert('outbox','gammu',array(
+                    'DestinationNumber' => $x,
+                    'TextDecoded' => $this->input->post('message'),
+                    ));
+                core::response($x, $this->input->post('message'));
+            }
         }
+
+        $this->session->set_flashdata('success','success');
+        $this->session->set_flashdata('TotalSend',$t);
+        redirect('send_broadcast');
+
     }
-    
-     
+}
+
+
 }
