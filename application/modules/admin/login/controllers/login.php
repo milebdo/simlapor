@@ -25,7 +25,7 @@ class Login extends MX_Controller
             $this->load->view('content');
         }
         else
-        {   
+        {
             if($this->check_login() == TRUE)
                 redirect('pbk');
             else{
