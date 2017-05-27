@@ -40,7 +40,7 @@ textarea:focus{
             <?php echo $this->load->view('admin/_sidebar');?>
             </div>
         
-            <div class="span10" >
+            <div class="span10 box" >
                
             <?php echo $content;?>
             

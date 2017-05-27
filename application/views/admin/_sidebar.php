@@ -6,7 +6,7 @@
 <?php $phonebook = core::get_all('pbk','gammu');?>
 <?php $group = core::get_all('pbk_groups','gammu');?>
 
- <div class='well' style='margin:-10px;border:1px solid #CCC;border-radius:0px;padding:5px;background:#f9f9f9;box-shadow:0px 0px 0px #000;'>
+ <div class='box'>
     <ul class="nav nav-list">
     <li class="nav-header">Menus</li>
     <li class="<?php echo $this->uri->segment(1) == 'pbk' ? "active" : "";?>"><a href="<?php echo base_url('pbk');?>">Phonebook
