@@ -51,7 +51,10 @@ class Pbk extends Admincore
             core::insert('pbk','gammu',array(
 				    'Name'  => $row['name'],
 				    'Number' => $row['phone'],
-				    'GroupID' => $row['group']
+                    'GroupID' => $row['group'],
+                    'RwNumber' => $row['RwNumber'],
+                    'Status' => $row['Status'],
+				    'Birth' => $row['Birth']
 				));
 	  }
             redirect('pbk');

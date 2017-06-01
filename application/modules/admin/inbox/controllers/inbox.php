@@ -52,9 +52,10 @@ class Inbox extends Admincore
                       if ($content[0] === 'PASIEN') $group = self::PASIEN;
                       if ($content[0] === 'KADER') $group = self::KADER;
                       $this->registerNewUser($sender, $group, $content);
-                      $query2 = "UPDATE inbox SET Processed = 'true' WHERE ID = '$smsID'";
-                      mysql_query($query2);
-                  }
+                  } else {
+                      $repliedText = "Maaf FORMAT REGISTRASI SALAH, mohon periksa dan ulangi registrasi";
+                      $this->replayedSMS($sender, $repliedText);
+                  }                        
               }
           }
         }
@@ -91,13 +92,15 @@ class Inbox extends Admincore
         }
     }
 
-    private function replayedSMS($sender, $message)
+    private function replayedSMS($sender, $message, $smsID)
     {
         core::insert('outbox','gammu',array(
           'DestinationNumber' => $sender,
           'TextDecoded' => $message,
         ));
         core::response($sender, $message);
+        $query = "UPDATE inbox SET Processed = 'true' WHERE ID = '$smsID'";
+        mysql_query($query);
     }
 
      /* METHOD "SEARCH"*/
