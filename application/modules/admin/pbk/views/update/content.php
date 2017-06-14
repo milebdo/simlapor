@@ -2,7 +2,9 @@
     <div class="span12">
 
         <?php echo $this->load->view('_layouts/menus');?>   
-        <a href='<?php echo base_url('pbk');?>' class='btn'><i class='fa fa-angle-double-left'></i> Back to List</a>
+        <a href='<?php echo base_url('pbk');?>' class='btn'><i class='fa fa-angle-double-left'></i> 
+            Kembali
+        </a>
         <br><hr>
         <!--START FORM-->
         <form method='POST' charset='UTF-8' action='<?php echo base_url('pbk/update').'/'.$this->uri->segment(3);?>' class="form" >
@@ -16,7 +18,7 @@
                 <div class='controls'>
                     <?php $group = core::get_all('pbk_groups','gammu');?>
                     <select name='GroupID' class='span5'>
-                        <option value='0'>No Group</option>
+                        <option value='0'>Pilih Grup</option>
                         <?php foreach($group->result() as $rows) { ?>
                         <option value='<?php echo $rows->ID;?>' <?php echo $row['GroupID'] == $rows->ID ? "selected" : "";?>><?php echo $rows->Name;?></option>
                         <?php } ?>
@@ -27,16 +29,16 @@
 
                 <!-- start Name -->
                 <div class='control-group <?php echo form_error('Name') ? 'error' : ''; ?>'>
-                    <label class='control-label' ><strong>Name</strong></label>
+                    <label class='control-label' ><strong>Nama</strong></label>
                     <div class='controls'>
-                        <input type='text' name='Name' class='span5'  placeholder='Name' value='<?php echo $row['Name'];?>' required>
+                        <input type='text' name='Name' class='span5'  placeholder='Nama' value='<?php echo $row['Name'];?>' required>
                         <?php echo form_error('Name'); ?></div>
                     </div>
                     <!-- end Name -->
 
                     <!-- start Number -->
                     <div class='control-group <?php echo form_error('Number') ? 'error' : ''; ?>'>
-                        <label class='control-label' ><strong>Number</strong></label>
+                        <label class='control-label' ><strong>Telepon</strong></label>
                         <div class='controls'>
                             <input type='text' name='Number' class='span5'  placeholder='Number' value='<?php echo $row['Number'];?>'  required>
                             <?php echo form_error('Number'); ?></div>
@@ -46,8 +48,12 @@
                         <!--Submit -->
                         <div class="control-group ">
                             <div class="controls">
-                                <a href='<?php echo base_url('pbk');?>' class="btn"><i class='fa fa-times'></i> Cancel</a>
-                                <button data-loading-text="Loading ..." type="submit" class="submit btn btn-warning"><i class='fa fa-edit'></i> Update</button>
+                                <a href='<?php echo base_url('pbk');?>' class="btn"><i class='fa fa-times'></i>
+                                    Batalkan
+                                </a>
+                                <button data-loading-text="Loading ..." type="submit" class="submit btn btn-warning"><i class='fa fa-edit'></i>
+                                    Ubah
+                                </button>
                             </div>
                         </div>
                         <!--end submit -->

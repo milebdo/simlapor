@@ -9,11 +9,11 @@
 					<td><?php echo $row->ID;?></td>
 				</tr>
 				<tr>
-					<td>GroupID</td>
+					<td>Grup</td>
 					<td><?php echo $row->GroupID;?></td>
 				</tr>
 				<tr>
-				<td>Name</td>
+				<td>Nama</td>
 					<td><?php echo $row->Name;?></td>
 				</tr>
 				<tr>

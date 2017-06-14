@@ -1,2 +1,2 @@
-<h3>Sending<small>  </small></h3>
+<h3>Pesan Terkirim<small>  </small></h3>
     

@@ -1,2 +1,2 @@
-<h3>Inbox<small>  </small></h3>
+<h3>Pesan Masuk<small>  </small></h3>
     

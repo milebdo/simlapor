@@ -1,21 +1,17 @@
 <div class='row-fluid'>
     <div class="span12">
-
-
         <?php echo $this->load->view('_layouts/menus');?>
-
-        <a href="<?php echo base_url('pbk/create');?>" class='btn'><i class='fa fa-pencil'></i> Add Contact</a>
-
+        <a href="<?php echo base_url('pbk/create');?>" class='btn'><i class='fa fa-pencil'></i> 
+            Tambah Kontak
+        </a>
         <hr>
-
-
         <div class="input-prepend input-append">
             <form action='<?php echo base_url('pbk/search');?>' method='get'>
                 <input class="span9" type="text" name='search'>                   
                 <select name='search_by' style='width:100px;'>
 
-                    <option value='Name' >Name</option>
-                    <option value='Number' >Number</option>
+                    <option value='Name' >Nama</option>
+                    <option value='Number' >Telepon</option>
 
                 </select>
                 <button class="btn" type="submit">Cari</button>
@@ -23,7 +19,7 @@
         </div>
 
         <select class="span2  pull-right" onchange="location = this.options[this.selectedIndex].value;">
-            <option selected='selected' disabled='disabled'>Pilih Rows</option>
+            <option selected='selected' disabled='disabled'>Jumlah Baris</option>
             <option value="<?php echo base_url('pbk/index/rows/25');?>">25 Rows</option>
             <option value="<?php echo base_url('pbk/index/rows/50');?>">50 Rows</option>
             <option value="<?php echo base_url('pbk/index/rows/75');?>">75 Rows</option>
@@ -43,7 +39,6 @@
             $url      = 'pbk/index';
         }
         ?>
-
         <div class='table-responsive margin-table'>
             <table class='table'>
                 <caption class='text-right'>
@@ -52,9 +47,9 @@
                 </caption><thead>
                 <tr>
                     <th style='width:20px;'>No</th>
-                    <th>Name</th>
-                    <th>Number</th>
-                    <th>Group</th>
+                    <th>Nama</th>
+                    <th>Telepon</th>
+                    <th>Grup</th>
                     <th>RW</th>
                     <th>Umur</th>
                     <th>Status</th>
@@ -78,7 +73,6 @@
                                 <a  href='<?php echo base_url();?>pbk/update/<?php echo $row->ID;?>' class='btn   btn-small'><i class='text-warning fa fa-edit'></i></a>
                             </div></center>
                         </td>
-
                     </tr>
                     <?php } ?>
                     <?php $i++;?>
@@ -86,11 +80,7 @@
             </tbody>
         </table>
     </div>
-
-
     <?php echo $this->pagination->create_links(); ?>
-
-
 </div>
 </div>
 <script type='text/javascript'>
