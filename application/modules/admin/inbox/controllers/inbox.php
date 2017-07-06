@@ -11,7 +11,6 @@ class Inbox extends Admincore
     {
         parent::__construct();
         $this->load->model('inbox_model','model');
-        core::update_where('inbox','gammu',array('newComing' => 0),'newComing',1);
     }
 
     /* METHOD "READ"
@@ -55,7 +54,7 @@ class Inbox extends Admincore
                   } else {
                       $repliedText = "Maaf FORMAT REGISTRASI SALAH, mohon periksa dan ulangi registrasi";
                       $this->replayedSMS($sender, $repliedText);
-                  }                        
+                  }
               }
           }
         }
@@ -63,31 +62,33 @@ class Inbox extends Admincore
 
     private function registerNewUser($sender, $group, $content)
     {
-        $isExist = $this->model->exist_user($sender);
+        $query = core::get_where('pbk','gammu',array(
+            'Number' => $sender
+        ),1);
+        $isExist = $query->row_array();
         if (!empty($isExist)) {
-            $repliedText = "Maaf, notelp ".$sender." telah terdaftar sebelumnya atas nama " . $isExist->Name;
+            $repliedText = "Maaf, notelp ".$sender." telah terdaftar sebelumnya atas nama " . $isExist['Name'];
             $this->replayedSMS($sender, $repliedText);
         } else {
-            // $datasource = $this->structedSource(self::REGISTER, $type, $sender, $arrayContent);
-            // $query2 = "INSERT INTO pbk (GroupID, Name, Number) VALUES ('$idgroup', '$nama', '$noHP')";
-            // mysql_query($query2);
-            // $tbl,$database,$arr
             $data = array(
               'GroupID' => $group,
               'Name' => $content[1],
+              'Number' => $sender,
               'RwNumber' => $content[2],
               'Status' => $content[3],
               'Birth' => $content[4],
             );
             $isSaved = $this->model->insert('pbk', 'gammu', $data);
             if($isSaved) {
-                if($group == self::PASIEN) $type = 'PASIEN';
-                if($group == self::KADER) $type = 'KADER';
-                $repliedText = "Terima kasih, Sdr. ".$datasource['name']." telah terdaftar sebagai ".$type;
+                $query = core::get_where('pbk_groups','gammu',array(
+                    'ID' => $group
+                ));
+                $type = $query->row_array();
+                $repliedText = "Terima kasih, Sdr. ".$data['Name']." telah terdaftar sebagai ".$type['Name'];
                 $this->replayedSMS($sender, $repliedText);
                 return;
             }
-            $repliedText = "Maaf, Sdr. ".$datasource['name']." GAGAL tersimpan, silahkan coba lagi";
+            $repliedText = "Maaf, Sdr. ".$data['Name']." GAGAL tersimpan, silahkan coba lagi";
             $this->replayedSMS($sender, $repliedText);
         }
     }
@@ -99,8 +100,8 @@ class Inbox extends Admincore
           'TextDecoded' => $message,
         ));
         core::response($sender, $message);
-        $query = "UPDATE inbox SET Processed = 'true' WHERE ID = '$smsID'";
-        mysql_query($query);
+        core::update_where('inbox','gammu',array('newComing' => 0),'newComing',1);
+        core::update_where('inbox','gammu',array('Processed' => 'true'),'Processed','false');
     }
 
      /* METHOD "SEARCH"*/

@@ -189,18 +189,18 @@ class Core extends MX_Controller {
 
 // HELPER
     function rupiah($angka){
-        $angka= number_format($angka, 0, ".","."); 
+        $angka= number_format($angka, 0, ".",".");
         return $angka;
     }
 
     function voucher($nilai)
-    { 
-        $voucher = 
-        substr($nilai,0,4) . ' - ' . 
-        substr($nilai,4,4) . ' - ' . 
-        substr($nilai,8,4). ' - ' . 
-        substr($nilai,12,4). ' - ' . 
-        substr($nilai,16,4). ' - ' . 
+    {
+        $voucher =
+        substr($nilai,0,4) . ' - ' .
+        substr($nilai,4,4) . ' - ' .
+        substr($nilai,8,4). ' - ' .
+        substr($nilai,12,4). ' - ' .
+        substr($nilai,16,4). ' - ' .
         substr($nilai,20,4);
 
 

@@ -7,9 +7,9 @@ class Admincore extends Core
     function __construct()
     {
         parent::__construct();
-        //$this->load->model('admincore_model');
+        // $this->load->model('inbox_model');
         if(!$this->session->userdata('username'))
-	{   
+	      {
             redirect('login');
         }
     }
